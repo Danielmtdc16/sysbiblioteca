@@ -3,7 +3,12 @@ class EditorasController < ApplicationController
 
   # GET /editoras or /editoras.json
   def index
-    @editoras = Editora.all
+    if params[:nome] == nil
+      @editoras = Editora.all.order("editoras.nome ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @editoras = Editora.all.where("users.nome ILIKE  '%"+params[:nome].strip+"%'").order("editoras.nome ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /editoras/1 or /editoras/1.json
