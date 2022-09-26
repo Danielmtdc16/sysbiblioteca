@@ -3,7 +3,12 @@ class LeitorsController < ApplicationController
 
   # GET /leitors or /leitors.json
   def index
-    @leitors = Leitor.all
+    if params[:nome] == nil
+      @leitors = Leitor.all.order("leitors.nome ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @leitors = Leitor.all.where("leitors.nome ILIKE  '%"+params[:nome].strip+"%'").order("leitors.nome ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /leitors/1 or /leitors/1.json

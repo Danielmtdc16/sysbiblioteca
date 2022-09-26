@@ -1,34 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <h2 class="page-header">
+              Leitores
+          </h2>
+      </div>
+  </div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @leitor.nome %>
-</p>
+  <div class="row">
+     <div class="col-lg-6 form-group">
+         <label class = 'control-label'>Nome</label>
+        <input readonly="true" class = 'form-control' value="<%= @leitor.nome %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>CPF</label>
+        <input readonly="true" class = 'form-control' value="<%= @leitor.cpf %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Telefone</label>
+        <input readonly="true" class = 'form-control' value="<%= @leitor.telefone %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>email</label>
+        <input readonly="true" class = 'form-control' value="<%= @leitor.email %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Tipo de leitor</label>
+        <input readonly="true" class = 'form-control' value="<%= @leitor.tipo_leitor %>" />
+     </div>
+  </div>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @leitor.cpf %>
-</p>
 
-<p>
-  <strong>Telefone:</strong>
-  <%= @leitor.telefone %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @leitor.email %>
-</p>
-
-<p>
-  <strong>Tipo leitor:</strong>
-  <%= @leitor.tipo_leitor %>
-</p>
-
-<p>
-  <strong>Matricula:</strong>
-  <%= @leitor.matricula %>
-</p>
-
-<%= link_to 'Edit', edit_leitor_path(@leitor) %> |
-<%= link_to 'Back', leitors_path %>
+  <div class="row">
+    <div class="col-lg-4 form-group">
+      <%= link_to 'Alterar', edit_leitor_path(@leitor), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to 'Voltar',  leitors_path, :class => "btn btn-primary colorprimarybtn"%>
+    </div>
+  </div>
+</div>

@@ -1,37 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="categdespesas index">
+<h2>Leitores </h2>
+<%= form_tag leitors_path( format:"html"), :method => 'get' do %>  
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-5  form-group">  
+          <%= text_field_tag :nome, params[:nome], :class => 'form-control', :placeholder=>"Digite o nome para pesquisar" %>  
+        </div>
+        <div class="col-lg-2 form-group">
+          <%= submit_tag "Pesquisar", :class => "btn btn-primary colorprimarybtn" %>
+        </div>
+      
+        <div class="col-lg-2 form-group">  
+            <span class="input-group-btn" style="display: inline-block;"><button class="btn btn-primary colorprimarybtn" type="button" onclick="javascript: location.href='<%= new_leitor_path %>';"><i class="fa fa-plus-circle"></i> Novo Leitor</button></span>
+      </div>
+  </div>
+</div>
+</div>
+<% end  %>  
 
-<h1>Leitors</h1>
+<div class="table-responsive">
+<table class="table table-hover table-striped" cellpadding="0" cellspacing="0">
+<thead>
+<tr>
+<th>COD</th>
+<th>Nome</th>
+<th>CPF</th>
+<th>Telefone</th>
+<th>Email</th>
+<th>Tipo de Leitor</th>
+<th colspan="3"></th>
+</tr>
+</thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Cpf</th>
-      <th>Telefone</th>
-      <th>Email</th>
-      <th>Tipo leitor</th>
-      <th>Matricula</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leitors.each do |leitor| %>
-      <tr>
-        <td><%= leitor.nome %></td>
-        <td><%= leitor.cpf %></td>
-        <td><%= leitor.telefone %></td>
-        <td><%= leitor.email %></td>
-        <td><%= leitor.tipo_leitor %></td>
-        <td><%= leitor.matricula %></td>
-        <td><%= link_to 'Show', leitor %></td>
-        <td><%= link_to 'Edit', edit_leitor_path(leitor) %></td>
-        <td><%= link_to 'Destroy', leitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<tbody>
+<% @leitors.each do |leitor| %>
+<tr>
+  <td><%= "%06d"%leitor.id %></td>
+  <td><%= leitor.nome %></td>
+  <td><%= leitor.cpf %></td>
+  <td><%= leitor.telefone %></td>
+  <td><%= leitor.email %></td>
+  <td><%= leitor.tipo_leitor %></td>
+  <td><%= link_to 'Visualizar', leitor %></td>
+  <td><%= link_to 'Alterar', edit_leitor_path(leitor) %></td>   
+  <td><%= link_to 'Excluir', leitor, method: :delete,remote: true, class: 'remove-tag', data: { confirm: 'Deseja excluir o leitor?' } %></td>
+</tr>
+<% end %>
+</tbody>
 </table>
+</div>
 
-<br>
-
-<%= link_to 'New Leitor', new_leitor_path %>
+<%= paginate @leitors %>
+</div>

@@ -1,47 +1,56 @@
-<%= form_with(model: leitor) do |form| %>
-  <% if leitor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(leitor.errors.count, "error") %> prohibited this leitor from being saved:</h2>
+<div class="user form">
 
-      <ul>
-        <% leitor.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: leitor, local: true) do |form| %>
+       <% if leitor.errors.any? %>
+
+         <div id="error_explanation" class="panel panel-danger mensagem-erro-cabecalho">
+           <div class="panel-heading">
+               <h3 class="panel-title"><%= pluralize(leitor.errors.count, "error(s)") %> ao salvar:</h3>
+            </div>
+           <div class="panel-body">
+             <ul>
+             <% leitor.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+             </ul>
+           </div>
+         </div>
+       <% end %>
+    
+    <div class="row">
+       <div class="col-lg-6 form-group">   
+           <%= form.label :nome, :class => 'control-label required' %>
+           <%= form.text_field :nome, id: :leitor_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-3 form-group">   
+           <%= form.label :cpf, :class => 'control-label required' %>
+           <%= form.text_field :cpf, id: :leitor_nome, :class => 'form-control', :onkeypress=>"mask_cpf(this, mcpf);", :onblur=>"mask_cpf(this, mcpf);" %>
+       </div>
+       <div class="col-lg-3 form-group">   
+           <%= form.label :telefone, :class => 'control-label required' %>
+           <%= form.text_field :telefone, id: :leitor_nome, :class => 'form-control', :onkeypress=>"mask(this, mphone);", :onblur=>"mask(this, mphone);" %>
+       </div>
+       <div class="col-lg-3 form-group">   
+           <%= form.label :email, :class => 'control-label required' %>
+           <%= form.text_field :email, type: 'email', id: :leitor_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-3 form-group">   
+           <%= form.label :tipo_leitor, :class => 'control-label required' %>
+           <%= form.text_field :tipo_leitor, id: :leitor_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-3 form-group">   
+           <%= form.label :matricula, :class => 'control-label required' %>
+           <%= form.text_field :matricula, id: :leitor_nome, :class => 'form-control' %>
+       </div>
     </div>
-  <% end %>
+    
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :telefone %>
-    <%= form.text_field :telefone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tipo_leitor %>
-    <%= form.text_field :tipo_leitor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :matricula %>
-    <%= form.text_field :matricula %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    
+      <div class="row">
+          <div class="col-lg-7 form-group">  
+            <input type="submit" name="commit" class="btn btn-primary colorprimarybtn" value="Salvar" data-disable-with="Salvando" />
+            <%= link_to 'Voltar', leitors_path, :class => "btn btn-primary colorprimarybtn"%>
+          </div>
+      </div>
+   <% end %>                         
+</div>

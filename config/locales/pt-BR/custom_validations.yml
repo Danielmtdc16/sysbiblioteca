@@ -17,6 +17,10 @@ pt-BR:
         display_entries: "Exibindo %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> no total"
   activerecord:
     attributes:
+      leitor:
+        cpf: "CPF"
+        matricula: "Matrícula"
+        tipo_leitor: "Tipo de Leitor"
       
       
         
