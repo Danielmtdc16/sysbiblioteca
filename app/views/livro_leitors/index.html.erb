@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Livro Leitors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data inicio</th>
+      <th>Data entrega</th>
+      <th>Data possivel entrega</th>
+      <th>Status</th>
+      <th>Observacao</th>
+      <th>User</th>
+      <th>Livro</th>
+      <th>Leitor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @livro_leitors.each do |livro_leitor| %>
+      <tr>
+        <td><%= livro_leitor.data_inicio %></td>
+        <td><%= livro_leitor.data_entrega %></td>
+        <td><%= livro_leitor.data_possivel_entrega %></td>
+        <td><%= livro_leitor.status %></td>
+        <td><%= livro_leitor.observacao %></td>
+        <td><%= livro_leitor.user_id %></td>
+        <td><%= livro_leitor.livro_id %></td>
+        <td><%= livro_leitor.leitor_id %></td>
+        <td><%= link_to 'Show', livro_leitor %></td>
+        <td><%= link_to 'Edit', edit_livro_leitor_path(livro_leitor) %></td>
+        <td><%= link_to 'Destroy', livro_leitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Livro Leitor', new_livro_leitor_path %>

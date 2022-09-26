@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :livro_leitors
+  resources :livros
   devise_for :users
   resources :leitors
   resources :categores

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_26_181634) do
+ActiveRecord::Schema.define(version: 2022_09_26_185221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,45 @@ ActiveRecord::Schema.define(version: 2022_09_26_181634) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "livro_autors", force: :cascade do |t|
+    t.bigint "livro_id", null: false
+    t.bigint "autor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["autor_id"], name: "index_livro_autors_on_autor_id"
+    t.index ["livro_id"], name: "index_livro_autors_on_livro_id"
+  end
+
+  create_table "livro_leitors", force: :cascade do |t|
+    t.datetime "data_inicio"
+    t.datetime "data_entrega"
+    t.datetime "data_possivel_entrega"
+    t.string "status"
+    t.text "observacao"
+    t.bigint "user_id", null: false
+    t.bigint "livro_id", null: false
+    t.bigint "leitor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["leitor_id"], name: "index_livro_leitors_on_leitor_id"
+    t.index ["livro_id"], name: "index_livro_leitors_on_livro_id"
+    t.index ["user_id"], name: "index_livro_leitors_on_user_id"
+  end
+
+  create_table "livros", force: :cascade do |t|
+    t.string "nome"
+    t.string "edicao"
+    t.integer "qtd_paginas"
+    t.integer "qtd_livros"
+    t.text "descricao"
+    t.bigint "editora_id", null: false
+    t.bigint "categore_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["categore_id"], name: "index_livros_on_categore_id"
+    t.index ["editora_id"], name: "index_livros_on_editora_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nome"
     t.string "telefone"
@@ -58,4 +97,11 @@ ActiveRecord::Schema.define(version: 2022_09_26_181634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "livro_autors", "autors"
+  add_foreign_key "livro_autors", "livros"
+  add_foreign_key "livro_leitors", "leitors"
+  add_foreign_key "livro_leitors", "livros"
+  add_foreign_key "livro_leitors", "users"
+  add_foreign_key "livros", "categores"
+  add_foreign_key "livros", "editoras"
 end

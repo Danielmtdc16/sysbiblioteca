@@ -1,0 +1,57 @@
+<%= form_with(model: livro_leitor) do |form| %>
+  <% if livro_leitor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(livro_leitor.errors.count, "error") %> prohibited this livro_leitor from being saved:</h2>
+
+      <ul>
+        <% livro_leitor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data_inicio %>
+    <%= form.datetime_select :data_inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_entrega %>
+    <%= form.datetime_select :data_entrega %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data_possivel_entrega %>
+    <%= form.datetime_select :data_possivel_entrega %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :observacao %>
+    <%= form.text_area :observacao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :livro_id %>
+    <%= form.text_field :livro_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :leitor_id %>
+    <%= form.text_field :leitor_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data inicio:</strong>
+  <%= @livro_leitor.data_inicio %>
+</p>
+
+<p>
+  <strong>Data entrega:</strong>
+  <%= @livro_leitor.data_entrega %>
+</p>
+
+<p>
+  <strong>Data possivel entrega:</strong>
+  <%= @livro_leitor.data_possivel_entrega %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @livro_leitor.status %>
+</p>
+
+<p>
+  <strong>Observacao:</strong>
+  <%= @livro_leitor.observacao %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @livro_leitor.user_id %>
+</p>
+
+<p>
+  <strong>Livro:</strong>
+  <%= @livro_leitor.livro_id %>
+</p>
+
+<p>
+  <strong>Leitor:</strong>
+  <%= @livro_leitor.leitor_id %>
+</p>
+
+<%= link_to 'Edit', edit_livro_leitor_path(@livro_leitor) %> |
+<%= link_to 'Back', livro_leitors_path %>
