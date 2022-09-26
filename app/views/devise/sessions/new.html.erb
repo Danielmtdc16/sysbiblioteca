@@ -1,0 +1,190 @@
+
+
+
+<style>
+
+:root {
+    --colorbasiclogin: #fff;
+    --colortextlogin: var(--colortext-menu); 
+}
+
+	body {
+    background: #DCDCDC;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-box {
+    margin-top: 75px;
+    height: auto;
+    background: var(--colorbasiclogin);
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.icon-cog {
+  color: var(--colortextlogin);
+}
+
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--colortextlogin);
+}
+
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
+
+#inputemail {
+    background-color: #DCDCDC;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #000;
+}
+
+#inputpassword {
+    background-color: #DCDCDC;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.form-control-label {
+    font-size: 12px;
+    color: var(--colortextlogin);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-outline-primary {
+    border-color: var(--colortextlogin);
+    color: var(--colortextlogin);
+    background-color: var(--colorbasic2);
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn-outline-primary:hover {
+    background-color:  var(--colorbasic2);
+    right: 0px;
+}
+
+.login-btm {
+    float: center;
+}
+
+.login-button {
+    padding-right: 0px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: var(--colortextlogin);
+}
+
+.loginbttm {
+    padding: 0px;
+}
+#flash_alert{
+  color: var(--colortextlogin);
+}
+
+</style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                
+                <div class="col-lg-12 login-title">
+                 
+                        <%= image_tag "cead.png",class: "img-fluid center-block",  align: "center", height: "100", width:"300"%>
+                </div>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form>
+                           
+                            <div class="form-group">
+                                <label class="form-control-label">EMAIL</label>
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputemail" %>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">SENHA</label>
+                                <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "inputpassword" %>
+                            </div>
+
+                            <div class="col-lg-12 login-btm login-button">
+                                <button type="submit" class="btn btn-outline-primary">ENTRAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <% end %>
+                <div class="col-lg-12">
+                
+            <center>
+              <strong>
+                 <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+              </strong>
+            </center>
+                
+             
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
