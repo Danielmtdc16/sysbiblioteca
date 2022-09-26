@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @leitor.nome %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @leitor.cpf %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @leitor.telefone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @leitor.email %>
+</p>
+
+<p>
+  <strong>Tipo leitor:</strong>
+  <%= @leitor.tipo_leitor %>
+</p>
+
+<p>
+  <strong>Matricula:</strong>
+  <%= @leitor.matricula %>
+</p>
+
+<%= link_to 'Edit', edit_leitor_path(@leitor) %> |
+<%= link_to 'Back', leitors_path %>

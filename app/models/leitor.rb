@@ -1,0 +1,2 @@
+class Leitor < ApplicationRecord
+end
