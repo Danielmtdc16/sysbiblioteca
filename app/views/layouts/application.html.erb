@@ -36,41 +36,31 @@
             </div>
             <ul class="list-unstyled components" class="menulink">
                 <li>
-                    <a href="<%= turmas_path %>" class="menulink" ><i class="fa fa-sitemap fa-fw"></i> Turmas</a>
+                    <a href="<%=  %>" class="menulink" ><i class="fa fa-sitemap fa-fw"></i> Turmas</a>
                 </li>
                 <li>
-                    <a href="<%= alunos_path %>" class="menulink" ><i class="fa fa-user fa-fw"></i> Alunos</a>
+                    <a href="<%=  %>" class="menulink" ><i class="fa fa-user fa-fw"></i> Alunos</a>
                 </li>
-                <li>
-                    <a href="#cursosubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menulink">
-                    <i class="fas fa-copy"></i> Solicitações de Inscrições</a>
-                    <ul class="collapse list-unstyled" id="cursosubmenu">
-                    <% listCursosCoordenador.each do |curso| %>
-                        <li>
-                            <a href="<%= index_solicitacaoalunos_path(curso) %>" class="menulink" ><i class="fa fa-book fa-fw"></i> <%= curso.nome%></a>
-                        </li>
-                    <% end %>
-                    </ul>
-                </li>
+               
                 
                 <li>
                     <a href="#configuracaosubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menulink">
                     <i class="fas fa-cog"></i> Configurações</a>
                     <ul class="collapse list-unstyled" id="configuracaosubmenu">
                         <li>
-                            <a href="<%= cursos_path %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Lista de Cursos</a>
+                            <a href="<%=  %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Lista de Cursos</a>
                         </li>
                         <li>
-                            <a href="<%= eixos_path %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Eixos</a>
+                            <a href="<%=  %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Eixos</a>
                         </li>
                         <li>
-                            <a href="<%= disciplinas_path %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Disciplinas</a>
+                            <a href="<%=  %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Disciplinas</a>
                         </li>
                         <li>
-                            <a href="<%= professors_path %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Professores</a>
+                            <a href="<%=  %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Professores</a>
                         </li>
                         <li>
-                            <a href="<%= certificados_autoridades_path %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Autoridades Certificadoras</a>
+                            <a href="<%=  %>" class="menulink" ><i class="fa fa-book fa-fw"></i> Autoridades Certificadoras</a>
                         </li>
                     </ul>
                 </li>
@@ -79,14 +69,14 @@
                     <a href="<%= users_path %>" class="menulink"><i class="fa fa-users fa-fw"></i> Usuários</a>
                 </li>
                 <li>
-                    <a href="<%= ajuda_users_path %>" class="menulink"><i class="fa fa-question fa-fw"></i> Ajuda</a>
+                    <a href="<%=  %>" class="menulink"><i class="fa fa-question fa-fw"></i> Ajuda</a>
                 </li>
             </ul>
        
          
            <ul class="list-unstyled CTAs">
                 <li>
-                    <%= link_to('SAIR', destroy_user_session_path, method: :delete, class: 'download') %>
+                   
                 </li>
             </ul>
         </nav>

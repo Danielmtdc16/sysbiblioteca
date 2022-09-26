@@ -29,32 +29,32 @@ amarelo
 */
 
 :root {
-    --colorbasic: #50b0a5;
-    --colorbasic2: #66cdaa;
-    --colortext: #000; 
-    --colortext-menu: #000; 
+    --colorbasic: #143783;
+    --colorbasic2: #3b5998;
+    --colortext: #FFF; 
+    --colortext-menu: #FFF; 
 }
 
 .colorprimarybtn{
     background-color: var(--colorbasic2);
     border-color: var(--colorbasic2) !important;
-    color: #000;
+    color: var(--colortext);
     margin-top: 5px;
 }
 
 a.colorprimarybtn:link, a.colorprimarybtn:visited {
 	text-decoration: none;
-    color: #000;
+    color: var(--colortext);;
 }
 
 .colorprimarybtn:hover {
     background-color: var(--colorbasic);
     border-color: var(--colorbasic) !important;
-    color: #000;
+    color: var(--colortext);;
 }
 
 .page-item.active.colorlinkprimary .page-link{
-    color: #fff;
+    color: var(--colortext);;
     background-color: var(--colorbasic2);
     border-color: var(--colorbasic2);
     color: var(--colortext); 
