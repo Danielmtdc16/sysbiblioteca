@@ -1,0 +1,2 @@
+class Editora < ApplicationRecord
+end
