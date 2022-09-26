@@ -3,7 +3,13 @@ class AutorsController < ApplicationController
 
   # GET /autors or /autors.json
   def index
-    @autors = Autor.all
+    
+    if params[:nome] == nil
+      @autors = Autor.all.order("autors.nome ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @autors = Autor.all.where("autors.nome ILIKE  '%"+params[:nome].strip+"%'").order("autors.nome ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /autors/1 or /autors/1.json
@@ -22,6 +28,8 @@ class AutorsController < ApplicationController
   # POST /autors or /autors.json
   def create
     @autor = Autor.new(autor_params)
+
+
 
     respond_to do |format|
       if @autor.save

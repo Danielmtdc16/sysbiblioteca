@@ -1,9 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <h2 class="page-header">
+              Autor
+          </h2>
+      </div>
+  </div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @autor.nome %>
-</p>
+  <div class="row">
+     <div class="col-lg-6 form-group">
+         <label class = 'control-label'>Nome</label>
+        <input readonly="true" class = 'form-control' value="<%= @autor.nome %>" />
+     </div>
+     
+  </div>
 
-<%= link_to 'Edit', edit_autor_path(@autor) %> |
-<%= link_to 'Back', autors_path %>
+
+  <div class="row">
+    <div class="col-lg-4 form-group">
+      <%= link_to 'Alterar', edit_autor_path(@autor), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to 'Voltar',  autors_path, :class => "btn btn-primary colorprimarybtn"%>
+    </div>
+  </div>
+</div>
