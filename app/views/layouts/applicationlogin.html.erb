@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>CEAD</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <style>
+    @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+    </style>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/full-all/ckeditor.js"></script>
+  <style>
+
+    :root {
+        --colorbasiclogin: #fff;
+        --colortextlogin: var(--colortext-menu); 
+    }
+
+      body {
+        background: #FFF;
+        font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3b5998;  margin-bottom: 0px;">
+    <div class="container">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a target="_blank" class="text-white" href="https://api.whatsapp.com/send?phone=558632154101&amp;text=SITE%20CEAD">
+            <span class="glyphicon glyphicon-phone"></span> (86) 3215-4101
+          </a>      
+        </li>
+        &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a target="_blank" class="text-white" href="mailto:cead@ufpi.edu.br?subject=Site_CEAD">
+            <span class="glyphicon glyphicon-envelope"></span> cead@ufpi.edu.br
+          </a>   
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <nav class="navbar border-bottom navbar-expand-lg navbar-light " style="background-color: #dee2e6; color: #000;">
+      <a class="navbar-brand" href="<%= menu_alunos_path %>"><%= image_tag "cead.png",class: "img-fluid center-block",  align: "center", height: "75", width:"200"%></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= menu_alunos_path %>">Inicio</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Turmas</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= lista_solicitacaoalunos_path %>">Solicitações</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= new_user_session_path %>">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrapper">
+        <div class="content container-fluid">
+            <div class="container-fluid">
+              <%= yield %>
+            </div>
+          </div>
+    </div>
+
+  <%= render :partial => 'layouts/utilscripts' %>
+   
+</body>
+
+</html>

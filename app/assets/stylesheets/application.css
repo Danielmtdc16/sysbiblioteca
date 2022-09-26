@@ -1,15 +1,354 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+    DEMO STYLE
+    azul
+     --colorbasic: #004ba0;
+    --colorbasic2: #1976d2;
+
+    verde
+
+        --colorbasic: #00675b;
+    --colorbasic2: #009688;
+     --colorbasic2: #5ba59d;
+
+    vermelho 
+
+    --colorbasic: #c4001d;
+    --colorbasic2: #ff1744;
+
+    preto 
+     --colorbasic: #1b0000;
+    --colorbasic2: #3e2723;
+
+    cinza
+
+      --colorbasic: #8d8d8d;
+    --colorbasic2: #bdbdbd;
+amarelo
+        --colorbasic: #c6a700;
+    --colorbasic2: #fdd835;
+*/
+
+:root {
+    --colorbasic: #50b0a5;
+    --colorbasic2: #66cdaa;
+    --colortext: #000; 
+    --colortext-menu: #000; 
+}
+
+.colorprimarybtn{
+    background-color: var(--colorbasic2);
+    border-color: var(--colorbasic2) !important;
+    color: #000;
+    margin-top: 5px;
+}
+
+a.colorprimarybtn:link, a.colorprimarybtn:visited {
+	text-decoration: none;
+    color: #000;
+}
+
+.colorprimarybtn:hover {
+    background-color: var(--colorbasic);
+    border-color: var(--colorbasic) !important;
+    color: #000;
+}
+
+.page-item.active.colorlinkprimary .page-link{
+    color: #fff;
+    background-color: var(--colorbasic2);
+    border-color: var(--colorbasic2);
+    color: var(--colortext); 
+}
+.page-link{
+    color: var(--colortext); 
+}
+
+.mensagem-erro-cabecalho{
+    color: red;
+}
+.required:after {
+    content:" *"; 
+    color: red;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+.paragrafo-editor p{
+    color: #000;
+}
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+a:link, a:visited {
+	text-decoration: none;
+    color: var(--colorbasic);
+}
+
+a.menulink:link, a.menulink:visited{
+    text-decoration: none;
+    color: var(--colortext-menu);
+}
+
+
+
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: var(--colorbasic2);
+    color: var(--colortext);
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: var(--colorbasic);
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: var(--colorbasic2);
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: var(--colorbasic);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: var(--colorbasic2);
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: var(--colortext);
+    color: var(--colorbasic2);
+}
+
+a.article,
+a.article:hover {
+    background: var(--colorbasic) !important;
+    color: var(--colortext) !important;
+}
+
+.menuicone{
+   margin-top: 25px;
+   text-align: center;
+}
+
+.menuprincipal{
+    background-color: var(--colorbasic2) !important;
+    margin-bottom: 25px;
+}
+
+.menucard a:hover {
+    color: #fff;
+    
+}
+.menucard{
+    text-align: center;
+}
+
+table.table td a.view {
+    color: #03A9F4;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td a.student {
+    color: #1ba06d;
+}
+
+/*tabela de notas*/
+.min-width-table{
+    min-width: 600px;
+}
+.min-width-table-celular{
+    min-width: 100px;
+    padding-right: 100px;
+}
+.min-width-td{
+    min-width: 80px;
+}
+.min-width-td-2{
+    min-width: 85px;
+}
+.min-width-td-lg{
+    min-width: 300px;
+}
+.min-width-td-md{
+    min-width: 200px;
+}
+
+.sticky-col {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: white;
+}
+  
+.first-col {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    left: 0px;
+}
+
+.first-col-tab {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    left: 0px;
+}
+  
+.second-col {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    left: 150px;
+}
+
+/*remove number arrows/spinners
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/*imagem no password*/
+.field-icon {
+  float: right;
+  margin-right: 5px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}

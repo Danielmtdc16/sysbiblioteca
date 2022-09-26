@@ -1,0 +1,153 @@
+<% unless flash.empty? %>
+<script type="text/javascript">
+  
+  <% flash.each do |f| %>
+    toastr.options.timeOut = 1500;
+      <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+      toastr['<%= type %>']('<%= f[1] %>');
+  <% end %>
+</script>
+<% end %>
+
+  <!-- jQuery CDN - Slim version (=without AJAX) -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').toggleClass('active');
+          });
+      });
+  </script>
+
+  <script type="text/javascript">
+    function mask(o, f) {
+      setTimeout(function() {
+        var v = mphone(o.value);
+        if (v != o.value) {
+          o.value = v;
+        }
+      }, 1);
+    }
+    
+    function mphone(v) {
+      var r = v.replace(/\D/g, "");
+      r = r.replace(/^0/, "");
+      if (r.length > 10) {
+        r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+      } else if (r.length > 5) {
+        r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+      } else if (r.length > 2) {
+        r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+      } else {
+        r = r.replace(/^(\d*)/, "$1");
+      }
+      return r;
+    }
+
+    function mask_cpf(o, f) {
+      setTimeout(function() {
+        var v = mcpf(o.value);
+        if (v != o.value) {
+          o.value = v;
+        }
+      }, 1);
+    }
+    
+    function mcpf(v) {
+      var r = v.replace(/\D/g, "");
+      
+      if (r.length > 9) {
+        r = r.replace(/^(\d\d\d)(\d{3})(\d{3})(\d{0,2}).*/, "$1.$2.$3-$4");
+      } else if (r.length > 6) {
+        r = r.replace(/^(\d\d\d)(\d{3})(\d{0,3}).*/, "$1.$2.$3");
+      } else if (r.length > 3) {
+        r = r.replace(/^(\d\d\d)(\d{0,3})/, "$1.$2");
+      } else {
+        r = r.replace(/^(\d*)/, "$1");
+      }
+      return r;
+    }
+
+    function mask_cep(o, f) {
+      setTimeout(function() {
+        var v = mcep(o.value);
+        if (v != o.value) {
+          o.value = v;
+        }
+      }, 1);
+    }
+    
+    function mcep(v) {
+      var r = v.replace(/\D/g, "");
+      r = r.replace(/^0/, "");
+      if (r.length > 5) {
+        r = r.replace(/^(\d{0,5})(\d{0,3}).*/, "$1-$2");
+      } else {
+        r = r.replace(/^(\d*)/, "$1");
+      }
+      return r;
+    }
+
+    function mask_numero(o, f) {
+      setTimeout(function() {
+        var v = mnumero(o.value);
+        if (v != o.value) {
+          o.value = v;
+        }
+      }, 1);
+    }
+    
+    function mnumero(v) {
+      var r = v.replace(/\D/g, "");
+      if (r.length > 11) {
+        r = r.replace(/^(\d{0,11}).*/, "$1");
+      } else {
+        r = r.replace(/^(\d*)/, "$1");
+      }
+      return r;
+    }
+  </script>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $('.remove-tag')
+        .bind('ajax:beforeSend', function(evt) {
+          evt.target.innerHTML = "Excluindo, aguarde ....";
+          evt.target.disabled = true;
+        })  
+        .bind('ajax:error', function(evt) {
+          evt.target.innerHTML = "Excluir";
+          evt.target.disabled = false;
+          toastr.options.timeOut = 1500;
+          toastr.error('Erro: Alguma dependencia com outro Registro!');
+        })      
+      });
+  </script>
+ 
+ <script>
+ CKEDITOR.replace('editortexto', 
+      {
+         uiColor: '#CCEAEE',
+        toolbar :
+        [
+        { name: 'document', items : [ 'NewPage','Preview' ] },
+        { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','-','Undo','Redo' ] },
+        { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
+                    '/',
+        { name: 'styles', color: '#000', items : [ 'Styles','Format','Font','FontSize' ] },
+        { name: 'colors', items : [ 'TextColor','BGColor' ] },
+        { name: 'basicstyles', items : ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat'] },
+        { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
+        { name: 'links', items : [ 'Link','Unlink'] },
+        { name: 'tools', items : [ 'Maximize'] }
+      ]
+    
+	});
+  
+             
+  </script>
+ 
+
