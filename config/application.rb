@@ -23,15 +23,15 @@ module Sysbiblioteca
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    
     # I18n config
-    config.i18n.load_path += Dir[Rails.root.join('config/locales/*/.{rb,yml}')]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}')]
     config.i18n.available_locales = [:'pt-BR', :en]
     config.i18n.default_locale = :'pt-BR'
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
    
     config.generators.system_tests = nil
-  
+   
   end
 end
