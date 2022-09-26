@@ -33,7 +33,7 @@ class AutorsController < ApplicationController
 
     respond_to do |format|
       if @autor.save
-        format.html { redirect_to autor_url(@autor), notice: "Autor was successfully created." }
+        format.html { redirect_to autor_url(@autor), notice: "Autor criada com sucesso."}
         format.json { render :show, status: :created, location: @autor }
       else
         format.html { render :new, status: :unprocessable_entity }
