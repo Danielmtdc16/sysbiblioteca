@@ -3,7 +3,13 @@ class CategoresController < ApplicationController
 
   # GET /categores or /categores.json
   def index
-    @categores = Categore.all
+    
+    if params[:nome] == nil
+      @categores = Categore.all.order("categores.nome ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @categores = Categore.all.where("categores.nome ILIKE  '%"+params[:nome].strip+"%'").order("categores.nome ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /categores/1 or /categores/1.json
@@ -23,9 +29,11 @@ class CategoresController < ApplicationController
   def create
     @categore = Categore.new(categore_params)
 
+
+
     respond_to do |format|
       if @categore.save
-        format.html { redirect_to categore_url(@categore), notice: "Categore was successfully created." }
+        format.html { redirect_to categore_url(@categore), notice: "categore criada com sucesso."}
         format.json { render :show, status: :created, location: @categore }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +46,7 @@ class CategoresController < ApplicationController
   def update
     respond_to do |format|
       if @categore.update(categore_params)
-        format.html { redirect_to categore_url(@categore), notice: "Categore was successfully updated." }
+        format.html { redirect_to categore_url(@categore), notice: "categore was successfully updated." }
         format.json { render :show, status: :ok, location: @categore }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +60,7 @@ class CategoresController < ApplicationController
     @categore.destroy
 
     respond_to do |format|
-      format.html { redirect_to categores_url, notice: "Categore was successfully destroyed." }
+      format.html { redirect_to categores_url, notice: "categore was successfully destroyed." }
       format.json { head :no_content }
     end
   end

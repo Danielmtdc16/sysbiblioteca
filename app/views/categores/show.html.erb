@@ -1,9 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <h2 class="page-header">
+              Categoria
+          </h2>
+      </div>
+  </div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @categore.nome %>
-</p>
+  <div class="row">
+     <div class="col-lg-6 form-group">
+         <label class = 'control-label'>Nome</label>
+        <input readonly="true" class = 'form-control' value="<%= @categore.nome %>" />
+     </div>
+     
+  </div>
 
-<%= link_to 'Edit', edit_categore_path(@categore) %> |
-<%= link_to 'Back', categores_path %>
+
+  <div class="row">
+    <div class="col-lg-4 form-group">
+      <%= link_to 'Alterar', edit_categore_path(@categore), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to 'Voltar',  categores_path, :class => "btn btn-primary colorprimarybtn"%>
+    </div>
+  </div>
+</div>
