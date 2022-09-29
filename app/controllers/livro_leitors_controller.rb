@@ -2,8 +2,14 @@ class LivroLeitorsController < ApplicationController
   before_action :set_livro_leitor, only: %i[ show edit update destroy ]
 
   # GET /livro_leitors or /livro_leitors.json
+ 
   def index
-    @livro_leitors = LivroLeitor.all
+    if params[:nome] == nil
+      @livro_leitors = LivroLeitor.all.joins(:leitor).joins(:livro).order("leitors.nome ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @livro_leitors = LivroLeitor.all.where("users.nome ILIKE  '%"+params[:nome].strip+"%'").order("users.nome ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /livro_leitors/1 or /livro_leitors/1.json

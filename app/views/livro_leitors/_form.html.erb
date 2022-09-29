@@ -1,57 +1,65 @@
-<%= form_with(model: livro_leitor) do |form| %>
-  <% if livro_leitor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(livro_leitor.errors.count, "error") %> prohibited this livro_leitor from being saved:</h2>
+<div class="livro_leitor form">
 
-      <ul>
-        <% livro_leitor.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: livro_leitor, local: true) do |form| %>
+       <% if livro_leitor.errors.any? %>
+
+         <div id="error_explanation" class="panel panel-danger mensagem-erro-cabecalho">
+           <div class="panel-heading">
+               <h3 class="panel-title"><%= pluralize(livro_leitor.errors.count, "error(s)") %> ao salvar:</h3>
+            </div>
+           <div class="panel-body">
+             <ul>
+             <% livro_leitor.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+             </ul>
+           </div>
+         </div>
+       <% end %>
+    
+    <div class="row">
+       <div class="col-lg-6 form-group">   
+           <%= form.label :data_inicio, :class => 'control-label required' %>
+           <%= form.text_field :data_inicio, type: 'date', id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :data_entrega, :class => 'control-label required' %>
+           <%= form.text_field :data_entrega, type: 'date', id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :data_possivel_entrega, :class => 'control-label required' %>
+           <%= form.text_field :data_possivel_entrega, type: 'date', id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :status, :class => 'control-label required' %>
+           <%= form.text_field :status, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :observacao, :class => 'control-label required' %>
+           <%= form.text_field :observacao, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :user_id, :class => 'control-label required' %>
+           <%= form.collection_select :user_id, listUsersAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :livro_id, :class => 'control-label required' %>
+           <%= form.collection_select :livro_id, listLivrosAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :leitor_id, :class => 'control-label required' %>
+           <%= form.collection_select :leitor_id, listLeitorsAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+       </div>
     </div>
-  <% end %>
+    </div>
+    
 
-  <div class="field">
-    <%= form.label :data_inicio %>
-    <%= form.datetime_select :data_inicio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_entrega %>
-    <%= form.datetime_select :data_entrega %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data_possivel_entrega %>
-    <%= form.datetime_select :data_possivel_entrega %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :observacao %>
-    <%= form.text_area :observacao %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :livro_id %>
-    <%= form.text_field :livro_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :leitor_id %>
-    <%= form.text_field :leitor_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    
+      <div class="row">
+          <div class="col-lg-7 form-group">  
+            <input type="submit" name="commit" class="btn btn-primary colorprimarybtn" value="Salvar" data-disable-with="Salvando" />
+            <%= link_to 'Voltar', livro_leitors_path, :class => "btn btn-primary colorprimarybtn"%>
+          </div>
+      </div>
+   <% end %>                         
+</div>
