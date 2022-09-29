@@ -49,8 +49,8 @@
   <td><%= livro_leitor.livro.nome %></td>
   <td><%= livro_leitor.leitor.nome %></td>
   <td><%= link_to 'Visualizar', livro_leitor %></td>
-  <td><%= link_to 'Alterar', edit_user_path(livro_leitor) %></td>   
-  <td><%= link_to 'Excluir', livro_leitor, method: :delete,remote: true, class: 'remove-tag', data: { confirm: 'Deseja excluir o administrador?' } %></td>
+  <td><%= link_to 'Alterar', edit_livro_leitor_path(livro_leitor) %></td>   
+  <td><%= link_to 'Excluir', livro_leitor, method: :delete,remote: true, class: 'remove-tag', data: { confirm: 'Deseja excluir esta reserva de livro?' } %></td>
 </tr>
 <% end %>
 </tbody>

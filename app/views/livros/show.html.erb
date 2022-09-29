@@ -1,39 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @livro.nome %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <h2 class="page-header">
+              Livro
+          </h2>
+      </div>
+  </div>
 
-<p>
-  <strong>Edicao:</strong>
-  <%= @livro.edicao %>
-</p>
+  <div class="row">
+     <div class="col-lg-6 form-group">
+         <label class = 'control-label'>Nome</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.nome %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Edição</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.edicao %>" />
+     </div>
+     <div class="col-lg-5 form-group">
+         <label class = 'control-label'>Quantidade de páginas</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.qtd_paginas %>" />
+     </div>
+     <div class="col-lg-5 form-group">
+         <label class = 'control-label'>Quantidade de livros disponíveis</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.qtd_livros %>" />
+     </div>
+     <div class="col-lg-5 form-group">
+         <label class = 'control-label'>Descrição</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.descricao %>" />
+     </div>
+     <div class="col-lg-5 form-group">
+         <label class = 'control-label'>Editora</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.editora %>" />
+     </div>
+     <div class="col-lg-5 form-group">
+         <label class = 'control-label'>Categoria</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro.categore %>" />
+     </div>
+  </div>
 
-<p>
-  <strong>Qtd paginas:</strong>
-  <%= @livro.qtd_paginas %>
-</p>
 
-<p>
-  <strong>Qtd livros:</strong>
-  <%= @livro.qtd_livros %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @livro.descricao %>
-</p>
-
-<p>
-  <strong>Editora:</strong>
-  <%= @livro.editora_id %>
-</p>
-
-<p>
-  <strong>Categore:</strong>
-  <%= @livro.categore_id %>
-</p>
-
-<%= link_to 'Edit', edit_livro_path(@livro) %> |
-<%= link_to 'Back', livros_path %>
+  <div class="row">
+    <div class="col-lg-4 form-group">
+      <%= link_to 'Alterar', edit_livro_path(@livro), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to 'Voltar',  livros_path, :class => "btn btn-primary colorprimarybtn"%>
+    </div>
+  </div>
+</div>

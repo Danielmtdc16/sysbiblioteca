@@ -1,52 +1,63 @@
-<%= form_with(model: livro) do |form| %>
-  <% if livro.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(livro.errors.count, "error") %> prohibited this livro from being saved:</h2>
 
-      <ul>
-        <% livro.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+<div class="livro form">
+
+  <%= form_with(model: livro, local: true) do |form| %>
+       <% if livro.errors.any? %>
+
+         <div id="error_explanation" class="panel panel-danger mensagem-erro-cabecalho">
+           <div class="panel-heading">
+               <h3 class="panel-title"><%= pluralize(livro.errors.count, "error(s)") %> ao salvar:</h3>
+            </div>
+           <div class="panel-body">
+             <ul>
+             <% livro.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+             </ul>
+           </div>
+         </div>
+       <% end %>
+    
+    <div class="row">
+       <div class="col-lg-6 form-group">   
+           <%= form.label :nome, :class => 'control-label required' %>
+           <%= form.text_field :nome, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :edicao, :class => 'control-label required' %>
+           <%= form.text_field :edicao, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :qtd_paginas, :class => 'control-label required' %>
+           <%= form.text_field :qtd_paginas, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :qtd_livros, :class => 'control-label required' %>
+           <%= form.text_field :qtd_livros, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :descricao, :class => 'control-label required' %>
+           <%= form.text_field :descricao, id: :user_nome, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :editora_id, :class => 'control-label required' %>
+           <%= form.collection_select :editora_id, listEditorasAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+       </div>
+       <div class="col-lg-6 form-group">   
+           <%= form.label :categore_id, :class => 'control-label required' %>
+           <%= form.collection_select :categore_id, listCategoresAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+       </div>
     </div>
-  <% end %>
+    </div>
+    
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :edicao %>
-    <%= form.text_field :edicao %>
-  </div>
-
-  <div class="field">
-    <%= form.label :qtd_paginas %>
-    <%= form.number_field :qtd_paginas %>
-  </div>
-
-  <div class="field">
-    <%= form.label :qtd_livros %>
-    <%= form.number_field :qtd_livros %>
-  </div>
-
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_area :descricao %>
-  </div>
-
-  <div class="field">
-    <%= form.label :editora_id %>
-    <%= form.text_field :editora_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :categore_id %>
-    <%= form.text_field :categore_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    
+      <div class="row">
+          <div class="col-lg-7 form-group">  
+            <input type="submit" name="commit" class="btn btn-primary colorprimarybtn" value="Salvar" data-disable-with="Salvando" />
+            <%= link_to 'Voltar', livros_path, :class => "btn btn-primary colorprimarybtn"%>
+          </div>
+      </div>
+   <% end %>                         
+</div>

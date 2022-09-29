@@ -3,12 +3,11 @@ class LivrosController < ApplicationController
 
   # GET /livros or /livros.json
   def index
-   
     if params[:nome] == nil
-      @autors = Livro.all.order("livro.nome ASC").page(params[:page]).per(20)
+      @livros = Livro.all.order("livros.nome ASC").page(params[:page]).per(20)
     else
       #variavel que recebe pesquisa solicitada pelo usuario
-      @livros = Livro.all.where("livro.nome ILIKE  '%"+params[:nome].strip+"%'").order("autors.nome ASC").page(params[:page]).per(20)
+      @livros = Livro.all.where("livros.nome ILIKE  '%"+params[:nome].strip+"%'").order("livros.nome ASC").page(params[:page]).per(20)
     end 
   end
 
@@ -67,7 +66,7 @@ class LivrosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_livro
-      @livro = Livro.find(params[:id])
+      @livros = Livro.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
