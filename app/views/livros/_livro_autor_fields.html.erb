@@ -2,7 +2,7 @@
 
    <div class="row">
       <div class="col-lg-8 form-group">  
-          <%= f.collection_select :autor_id, listAutorsAll, :id, :nome, {prompt: "Selecionar"}, class: "form-control" %>
+          <%= f.collection_select :autor_id, listAutorsAll, :id, :nome, {prompt: "Selecionar"}, class: "form-control", :id => 'autor_id' %>
       </div>
       <div class="col-lg-3 form-group"> 
         <%= link_to_remove_association "Remover Autor", f, class: "btn btn-primary colorprimarybtn" %>
@@ -10,3 +10,62 @@
 	</div> 
 
 </div>
+
+<script type="text/javascript">
+
+//gem select2 no combo box da sala  
+ $(document).ready(function() {
+  $('#autor_id').select2({
+   ajax: {
+     url: "<%= pesquisa_autors_path(format: 'json') %>",
+     dataType: 'json',
+     delay: 250,
+     data: function (params) {
+       return {
+        q: params.term, // search term
+        page: params.page
+       };
+     },
+     processResults: function (data, params) {
+       // parse the results into the format expected by Select2
+       // since we are using custom formatting functions we do not need to
+       // alter the remote JSON data, except to indicate that infinite
+       // scrolling can be used
+       params.page = params.page || 1;
+
+       return {
+         results: data,
+         pagination: {
+           more: (params.page * 30) < data.total_count
+         }
+       };
+     },
+     cache: true
+   },
+     placeholder: 'Pesquisar',
+     escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+     minimumInputLength: 0,
+     templateResult: formatRepoAnobase,
+     templateSelection: formatRepoSelectionAnoBase
+   });
+
+    function formatRepoAnobase (repo) {
+     if (repo.loading) {
+       return repo.text;
+     }
+     var markup = "<div class='select2-result-repository clearfix' >" +
+       "<div class='select2-result-repository__meta'>" +
+         "<div class='select2-result-repository__title'>"+repo.nome+"</div>";
+     "</div></div>";
+     return markup;
+   }
+
+   function formatRepoSelectionAnoBase (repo) {
+    if(repo.nome != null)
+     return repo.nome;
+   else
+    return repo.text;
+   }
+
+});
+</script>
