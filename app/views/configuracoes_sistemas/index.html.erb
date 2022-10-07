@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Configuracoes Sistemas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prazo dias</th>
+      <th>Nome sistema</th>
+      <th>Valor multa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @configuracoes_sistemas.each do |configuracoes_sistema| %>
+      <tr>
+        <td><%= configuracoes_sistema.prazo_dias %></td>
+        <td><%= configuracoes_sistema.nome_sistema %></td>
+        <td><%= configuracoes_sistema.valor_multa %></td>
+        <td><%= link_to 'Show', configuracoes_sistema %></td>
+        <td><%= link_to 'Edit', edit_configuracoes_sistema_path(configuracoes_sistema) %></td>
+        <td><%= link_to 'Destroy', configuracoes_sistema, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Configuracoes Sistema', new_configuracoes_sistema_path %>

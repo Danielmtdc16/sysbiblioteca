@@ -1,0 +1,32 @@
+<%= form_with(model: configuracoes_sistema) do |form| %>
+  <% if configuracoes_sistema.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(configuracoes_sistema.errors.count, "error") %> prohibited this configuracoes_sistema from being saved:</h2>
+
+      <ul>
+        <% configuracoes_sistema.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :prazo_dias %>
+    <%= form.number_field :prazo_dias %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome_sistema %>
+    <%= form.text_field :nome_sistema %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor_multa %>
+    <%= form.text_field :valor_multa %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
