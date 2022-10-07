@@ -25,6 +25,15 @@ class CategoresController < ApplicationController
   def edit
   end
 
+  def pesquisa
+    @categores = Categore.all
+    .where("categores.nome ILIKE '%"+params[:q].to_s+"%'").order("categores.nome")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # POST /categores or /categores.json
   def create
     @categore = Categore.new(categore_params)

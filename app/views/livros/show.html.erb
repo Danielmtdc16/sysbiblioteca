@@ -39,6 +39,22 @@
      </div>
   </div>
 
+  <% if !@livro.livro_autors.empty? %>
+  <div class="row">
+      <div class="col-lg-12">
+          <h3 class="page-header">
+              Autores
+          </h3>
+      </div>
+  </div>
+  <% @livro.livro_autors.each do |livro_autor| %>
+    <div class="row">
+      <div class="col-lg-10 form-group"> 
+          <input readonly="true" class = 'form-control' value="<%= livro_autor.autor.nome %>" />
+      </div>
+    </div>
+  <% end %>
+<% end %>
 
   <div class="row">
     <div class="col-lg-4 form-group">

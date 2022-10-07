@@ -25,6 +25,15 @@ class LivrosController < ApplicationController
   def edit
   end
 
+  def pesquisa
+    @livros = Livro.all
+    .where("livros.nome ILIKE '%"+params[:q].to_s+"%'").order("livros.nome")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # POST /livros or /livros.json
   def create
     @livro = Livro.new(livro_params)
@@ -71,6 +80,6 @@ class LivrosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def livro_params
-      params.require(:livro).permit(:nome, :edicao, :qtd_paginas, :qtd_livros, :descricao, :editora_id, :categore_id)
+      params.require(:livro).permit(:nome, :edicao, :qtd_paginas, :qtd_livros, :descricao, :editora_id, :categore_id, livro_autors_attributes: [:id, :autor_id,:_destroy])
     end
 end

@@ -1,0 +1,15 @@
+<div class="nested-fields">
+
+ <br>
+
+   <div class="row">
+      <div class="col-lg-8 form-group">  
+          <%= f.label :autor_id, :class => 'control-label required' %>
+          <%= f.collection_select :autor_id, listAutorsAll, :id, :nome, {prompt: "Selecionar"}, class: "form-control" %>
+      </div>
+      <div class="col-lg-3 form-group"> 
+        <%= link_to_remove_association "Remover Autor", f, class: "btn btn-primary colorprimarybtn" %>
+      </div>
+	</div> 
+
+</div>

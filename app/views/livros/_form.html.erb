@@ -46,11 +46,26 @@
        </div>
        <div class="col-lg-6 form-group">   
            <%= form.label :categore_id, :class => 'control-label required' %>
-           <%= form.collection_select :categore_id, listCategoresAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+           <%= form.collection_select :categore_id, listCategoresAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control', :id => 'categore_id' %>
        </div>
     </div>
     </div>
-    
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                Autores
+            </h3>
+        </div>
+    </div>
+    <div id="responsavelalunos">
+        <%= form.fields_for :livro_autors do |livro_autor| %>
+        <%= render 'livro_autor_fields', f: livro_autor %>
+          <%end%>
+      <div>
+      <%= link_to_add_association 'Adicionar Autor', form, :livro_autors, class: "btn btn-primary colorprimarybtn"  %>
+      </div>
+    </div>
+    <br><br>
 
     
       <div class="row">
@@ -70,6 +85,65 @@
   $('#editora_id').select2({
    ajax: {
      url: "<%= pesquisa_editoras_path(format: 'json') %>",
+     dataType: 'json',
+     delay: 250,
+     data: function (params) {
+       return {
+        q: params.term, // search term
+        page: params.page
+       };
+     },
+     processResults: function (data, params) {
+       // parse the results into the format expected by Select2
+       // since we are using custom formatting functions we do not need to
+       // alter the remote JSON data, except to indicate that infinite
+       // scrolling can be used
+       params.page = params.page || 1;
+
+       return {
+         results: data,
+         pagination: {
+           more: (params.page * 30) < data.total_count
+         }
+       };
+     },
+     cache: true
+   },
+     placeholder: 'Pesquisar',
+     escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+     minimumInputLength: 0,
+     templateResult: formatRepoAnobase,
+     templateSelection: formatRepoSelectionAnoBase
+   });
+
+    function formatRepoAnobase (repo) {
+     if (repo.loading) {
+       return repo.text;
+     }
+     var markup = "<div class='select2-result-repository clearfix' >" +
+       "<div class='select2-result-repository__meta'>" +
+         "<div class='select2-result-repository__title'>"+repo.nome+"</div>";
+     "</div></div>";
+     return markup;
+   }
+
+   function formatRepoSelectionAnoBase (repo) {
+    if(repo.nome != null)
+     return repo.nome;
+   else
+    return repo.text;
+   }
+
+});
+</script>
+
+<script type="text/javascript">
+
+//gem select2 no combo box da sala  
+ $(document).ready(function() {
+  $('#categore_id').select2({
+   ajax: {
+     url: "<%= pesquisa_categores_path(format: 'json') %>",
      dataType: 'json',
      delay: 250,
      data: function (params) {

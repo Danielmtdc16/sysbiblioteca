@@ -44,11 +44,11 @@
        </div>
        <div class="col-lg-6 form-group">   
            <%= form.label :livro_id, :class => 'control-label required' %>
-           <%= form.collection_select :livro_id, listLivrosAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+           <%= form.collection_select :livro_id, listLivrosAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control', :id => 'livro_id' %>
        </div>
        <div class="col-lg-6 form-group">   
            <%= form.label :leitor_id, :class => 'control-label required' %>
-           <%= form.collection_select :leitor_id, listLeitorsAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control' %>
+           <%= form.collection_select :leitor_id, listLeitorsAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control', :id => 'leitor_id'%>
        </div>
     </div>
     </div>
@@ -63,3 +63,121 @@
       </div>
    <% end %>                         
 </div>
+
+<script type="text/javascript">
+
+//gem select2 no combo box da sala  
+ $(document).ready(function() {
+  $('#livro_id').select2({
+   ajax: {
+     url: "<%= pesquisa_livros_path(format: 'json') %>",
+     dataType: 'json',
+     delay: 250,
+     data: function (params) {
+       return {
+        q: params.term, // search term
+        page: params.page
+       };
+     },
+     processResults: function (data, params) {
+       // parse the results into the format expected by Select2
+       // since we are using custom formatting functions we do not need to
+       // alter the remote JSON data, except to indicate that infinite
+       // scrolling can be used
+       params.page = params.page || 1;
+
+       return {
+         results: data,
+         pagination: {
+           more: (params.page * 30) < data.total_count
+         }
+       };
+     },
+     cache: true
+   },
+     placeholder: 'Pesquisar',
+     escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+     minimumInputLength: 0,
+     templateResult: formatRepoAnobase,
+     templateSelection: formatRepoSelectionAnoBase
+   });
+
+    function formatRepoAnobase (repo) {
+     if (repo.loading) {
+       return repo.text;
+     }
+     var markup = "<div class='select2-result-repository clearfix' >" +
+       "<div class='select2-result-repository__meta'>" +
+         "<div class='select2-result-repository__title'>"+repo.nome+"</div>";
+     "</div></div>";
+     return markup;
+   }
+
+   function formatRepoSelectionAnoBase (repo) {
+    if(repo.nome != null)
+     return repo.nome;
+   else
+    return repo.text;
+   }
+
+});
+</script>
+
+<script type="text/javascript">
+
+//gem select2 no combo box da sala  
+ $(document).ready(function() {
+  $('#leitor_id').select2({
+   ajax: {
+     url: "<%= pesquisa_leitors_path(format: 'json') %>",
+     dataType: 'json',
+     delay: 250,
+     data: function (params) {
+       return {
+        q: params.term, // search term
+        page: params.page
+       };
+     },
+     processResults: function (data, params) {
+       // parse the results into the format expected by Select2
+       // since we are using custom formatting functions we do not need to
+       // alter the remote JSON data, except to indicate that infinite
+       // scrolling can be used
+       params.page = params.page || 1;
+
+       return {
+         results: data,
+         pagination: {
+           more: (params.page * 30) < data.total_count
+         }
+       };
+     },
+     cache: true
+   },
+     placeholder: 'Pesquisar',
+     escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+     minimumInputLength: 0,
+     templateResult: formatRepoAnobase,
+     templateSelection: formatRepoSelectionAnoBase
+   });
+
+    function formatRepoAnobase (repo) {
+     if (repo.loading) {
+       return repo.text;
+     }
+     var markup = "<div class='select2-result-repository clearfix' >" +
+       "<div class='select2-result-repository__meta'>" +
+         "<div class='select2-result-repository__title'>"+repo.nome+"</div>";
+     "</div></div>";
+     return markup;
+   }
+
+   function formatRepoSelectionAnoBase (repo) {
+    if(repo.nome != null)
+     return repo.nome;
+   else
+    return repo.text;
+   }
+
+});
+</script>

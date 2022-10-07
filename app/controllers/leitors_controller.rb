@@ -24,6 +24,15 @@ class LeitorsController < ApplicationController
   def edit
   end
 
+  def pesquisa
+    @leitors = Leitor.all
+    .where("leitors.nome ILIKE '%"+params[:q].to_s+"%'").order("leitors.nome")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # POST /leitors or /leitors.json
   def create
     @leitor = Leitor.new(leitor_params)
