@@ -24,6 +24,15 @@ class EditorasController < ApplicationController
   def edit
   end
 
+  def pesquisa
+    @editoras = Editora.all
+    .where("editoras.nome ILIKE '%"+params[:q].to_s+"%'").order("editoras.nome")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # POST /editoras or /editoras.json
   def create
     @editora = Editora.new(editora_params)
