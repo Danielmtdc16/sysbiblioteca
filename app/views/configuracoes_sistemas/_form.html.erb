@@ -1,32 +1,37 @@
-<%= form_with(model: configuracoes_sistema) do |form| %>
-  <% if configuracoes_sistema.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(configuracoes_sistema.errors.count, "error") %> prohibited this configuracoes_sistema from being saved:</h2>
+<div class="user form">
 
-      <ul>
-        <% configuracoes_sistema.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: configuracoes_sistema, local: true) do |form| %>
+       <% if configuracoes_sistema.errors.any? %>
+
+         <div id="error_explanation" class="panel panel-danger mensagem-erro-cabecalho">
+           <div class="panel-heading">
+               <h3 class="panel-title"><%= pluralize(configuracoes_sistema.errors.count, "error(s)") %> ao salvar:</h3>
+            </div>
+           <div class="panel-body">
+             <ul>
+             <% configuracoes_sistema.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+             </ul>
+           </div>
+         </div>
+       <% end %>
+    
+    <div class="row">
+       <div class="col-lg-6 form-group">   
+           <%= form.label :nome, :class => 'control-label required' %>
+           <%= form.text_field :nome, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+       </div>
+    
     </div>
-  <% end %>
+    
 
-  <div class="field">
-    <%= form.label :prazo_dias %>
-    <%= form.number_field :prazo_dias %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nome_sistema %>
-    <%= form.text_field :nome_sistema %>
-  </div>
-
-  <div class="field">
-    <%= form.label :valor_multa %>
-    <%= form.text_field :valor_multa %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    
+      <div class="row">
+          <div class="col-lg-7 form-group">  
+            <input type="submit" name="commit" class="btn btn-primary colorprimarybtn" value="Salvar" data-disable-with="Salvando" />
+            <%= link_to 'Voltar', configuracoes_sistemas_path, :class => "btn btn-primary colorprimarybtn"%>
+          </div>
+      </div>
+   <% end %>                         
+</div>
