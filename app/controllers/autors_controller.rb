@@ -25,6 +25,15 @@ class AutorsController < ApplicationController
   def edit
   end
 
+  def pesquisa
+    @autors = Autor.all
+    .where("autors.nome ILIKE '%"+params[:q].to_s+"%'").order("autors.nome")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # POST /autors or /autors.json
   def create
     @autor = Autor.new(autor_params)

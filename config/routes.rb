@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :livro_leitors
   devise_for :users
-  resources :autors
   resources :users
   resources :editoras do 
+    collection { get :pesquisa }
+  end
+  resources :autors do 
     collection { get :pesquisa }
   end
   resources :leitors do 
