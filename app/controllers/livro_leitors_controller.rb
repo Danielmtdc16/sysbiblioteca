@@ -28,7 +28,7 @@ class LivroLeitorsController < ApplicationController
   # POST /livro_leitors or /livro_leitors.json
   def create
     @livro_leitor = LivroLeitor.new(livro_leitor_params)
-
+    @livro_leitor.user_id = current_user.id
     respond_to do |format|
       if @livro_leitor.save
         format.html { redirect_to livro_leitor_url(@livro_leitor), notice: "Livro leitor was successfully created." }
