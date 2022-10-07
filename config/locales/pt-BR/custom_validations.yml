@@ -25,6 +25,10 @@ pt-BR:
         password: "Senha"
       livro_leitor:
         user: "Usuário"
+      livro:
+        edicao: "Edição"
+        categore_id: "Categoria"
+        descricao: "Descrição"
       
       
         
