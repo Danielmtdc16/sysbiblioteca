@@ -1,5 +1,5 @@
 <div class="categdespesas index">
-<h2>Configuracoes Do Sistema</h2>
+<h2>Configurações Do Sistema</h2>
 <%= form_tag configuracoes_sistemas_path( format:"html"), :method => 'get' do %>  
 <div class="row">
   <div class="col-lg-12">
@@ -31,7 +31,7 @@
 </thead>
 
 <tbody>
-<% @configuracoes_sistemas.each do |configuracoes_sistema| %>
+<% @configuracoesSistemas.each do |configuracoes_sistema| %>
 <tr>
   <td><%= "%06d"%configuracoes_sistema.id %></td>
   <td><%= configuracoes_sistema.prazo_dias %></td>
@@ -45,5 +45,5 @@
 </table>
 </div>
 
-<%= paginate @configuracoes_sistema %>
+<%= paginate @configuracoesSistemas %>
 </div>
