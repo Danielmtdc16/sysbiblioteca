@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :configuracoes_sistemas
-  resources :livro_leitors
+  resources :livro_leitors do 
+    collection { get :relatorio }
+  end
+  
   devise_for :users
   resources :users
   resources :editoras do 

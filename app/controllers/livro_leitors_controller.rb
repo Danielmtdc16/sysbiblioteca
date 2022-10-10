@@ -1,6 +1,18 @@
 class LivroLeitorsController < ApplicationController
   before_action :set_livro_leitor, only: %i[ show edit update destroy ]
 
+  def relatorio 
+    @livro_leitors = LivroLeitor.all.order("id DESC")
+    respond_to do |format|
+      format.pdf do
+          pdf = EmprestimosPdf.new(@livro_leitors, @view_context) 
+          send_data pdf.render,
+          filename: "Reservas.pdf", type: "application/pdf", disposition: "inline"
+      end 
+    end
+  end
+
+  
   # GET /livro_leitors or /livro_leitors.json
  
   def index

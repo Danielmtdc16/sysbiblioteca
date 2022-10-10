@@ -1,44 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-12">
+          <h2 class="page-header">
+              Reservas
+          </h2>
+      </div>
+  </div>
 
-<p>
-  <strong>Data inicio:</strong>
-  <%= @livro_leitor.data_inicio %>
-</p>
+  <div class="row">
+     <div class="col-lg-6 form-group">
+         <label class = 'control-label'>Leitor</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro_leitor.leitor.nome %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Usuário</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro_leitor.user.nome %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Livro</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro_leitor.livro.nome %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Data Início</label>
+        <input readonly="true" class = 'form-control' value="<%= (@livro_leitor.data_inicio != nil ? @livro_leitor.data_inicio.strftime("%d/%m/%Y") : '')%>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Data Entrega</label>
+        <input readonly="true" class = 'form-control' value="<%= (@livro_leitor.data_entrega != nil ? @livro_leitor.data_entrega.strftime("%d/%m/%Y") : '') %>" />
+     </div>
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Data Possível Entrega</label>
+        <input readonly="true" class = 'form-control' value="<%= (@livro_leitor.data_possivel_entrega != nil ? @livro_leitor.data_possivel_entrega.strftime("%d/%m/%Y") : '') %>" />
+     </div>
+     
+     <div class="col-lg-3 form-group">
+         <label class = 'control-label'>Status</label>
+        <input readonly="true" class = 'form-control' value="<%= @livro_leitor.status %>" />
+     </div>
+  </div>
+  <div class="row">
+     
+  <div class="col-lg-11 form-group" >  
+    <label class = 'control-label'>Observação</label>
+      <textarea rows="5" readonly="true" class = 'form-control'> <%= @livro_leitor.observacao %> </textarea>                 
+  </div>
+</div>
 
-<p>
-  <strong>Data entrega:</strong>
-  <%= @livro_leitor.data_entrega %>
-</p>
-
-<p>
-  <strong>Data possivel entrega:</strong>
-  <%= @livro_leitor.data_possivel_entrega %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @livro_leitor.status %>
-</p>
-
-<p>
-  <strong>Observacao:</strong>
-  <%= @livro_leitor.observacao %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @livro_leitor.user_id %>
-</p>
-
-<p>
-  <strong>Livro:</strong>
-  <%= @livro_leitor.livro_id %>
-</p>
-
-<p>
-  <strong>Leitor:</strong>
-  <%= @livro_leitor.leitor_id %>
-</p>
-
-<%= link_to 'Edit', edit_livro_leitor_path(@livro_leitor) %> |
-<%= link_to 'Back', livro_leitors_path %>
+  <div class="row">
+    <div class="col-lg-4 form-group">
+      <%= link_to 'Alterar', edit_livro_leitor_path(@livro_leitor), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to 'Voltar',  livro_leitors_path, :class => "btn btn-primary colorprimarybtn"%>
+    </div>
+  </div>
+</div>

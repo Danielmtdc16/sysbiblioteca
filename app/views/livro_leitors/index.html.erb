@@ -11,8 +11,9 @@
           <%= submit_tag "Pesquisar", :class => "btn btn-primary colorprimarybtn" %>
         </div>
       
-        <div class="col-lg-2 form-group">  
+        <div class="col-lg-5 form-group">  
             <span class="input-group-btn" style="display: inline-block;"><button class="btn btn-primary colorprimarybtn" type="button" onclick="javascript: location.href='<%= new_livro_leitor_path %>';"><i class="fa fa-plus-circle"></i> Novo empréstimo</button></span>
+            <%= link_to "Relatório das Reservas", relatorio_livro_leitors_path(format: 'pdf'), :class => "btn btn-primary colorprimarybtn" %>
       </div>
   </div>
 </div>
