@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(nome: 'aluno', telefone: '1111', email: 'exemplo@gmail.com', password: '12345678')
+ConfiguracoesSistema.create(nome_sistema: 'SysBiblioteca', prazo_dias: 10, valor_multa: 5)
