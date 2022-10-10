@@ -19,11 +19,28 @@
     
     <div class="row">
        <div class="col-lg-6 form-group">   
-           <%= form.label :nome, :class => 'control-label required' %>
-           <%= form.text_field :nome, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+           <%= form.label :nome_sistema, :class => 'control-label required' %>
+           <%= form.text_field :nome_sistema, id: :configuracoes_sistema_nome, :class => 'form-control' %>
        </div>
     
     </div>
+
+    <div class="row">
+    <div class="col-lg-6 form-group">   
+        <%= form.label :prazo_dias, :class => 'control-label required' %>
+        <%= form.text_field :prazo_dias, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+    </div>
+ 
+    </div>  
+
+
+    <div class="row">
+    <div class="col-lg-6 form-group">   
+        <%= form.label :valor_multa, :class => 'control-label required' %>
+        <%= form.text_field :valor_multa, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+    </div>
+ 
+    </div>  
     
 
     

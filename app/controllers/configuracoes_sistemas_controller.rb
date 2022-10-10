@@ -3,7 +3,12 @@ class ConfiguracoesSistemasController < ApplicationController
 
   # GET /configuracoes_sistemas or /configuracoes_sistemas.json
   def index
-    @configuracoes_sistemas = ConfiguracoesSistema.all
+    if params[:nome_sistema] == nil
+      @configuracoes_sistemas = Configuracoes_sistema.all.order("configuracoes_sistemas.nome_sistema ASC").page(params[:page]).per(20)
+    else
+      #variavel que recebe pesquisa solicitada pelo usuario
+      @configuracoes_sistemas = Configuracoes_sistemas.all.where("configuracoes_sistemas.nome_sistema ILIKE  '%"+params[:nome_sistema].strip+"%'").order("configuracoes_sistemas.nome_sistema ASC").page(params[:page]).per(20)
+    end 
   end
 
   # GET /configuracoes_sistemas/1 or /configuracoes_sistemas/1.json
