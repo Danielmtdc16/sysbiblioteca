@@ -6,4 +6,6 @@ class Livro < ApplicationRecord
   has_many :livro_autors, inverse_of: :livro, dependent: :destroy
   accepts_nested_attributes_for :livro_autors, reject_if: :all_blank, allow_destroy: true
   
+  validates :nome, :edicao, :qtd_paginas, :qtd_livros, :descricao, presence: true
+
 end
