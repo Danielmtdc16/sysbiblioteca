@@ -1,23 +1,24 @@
 <div class="categdespesas index">
-<h2>Alunos com livros </h2>
+<h2>Reservas</h2>
 <%= form_tag livro_leitors_path( format:"html"), :method => 'get' do %>  
 <div class="row">
   <div class="col-lg-12">
     <div class="row">
         <div class="col-lg-5  form-group">  
-          <%= text_field_tag :nome, params[:nome], :class => 'form-control', :placeholder=>"Digite o nome para pesquisar" %>  
+          <%= text_field_tag :nome, params[:nome], :class => 'form-control', :placeholder=>"Digite o nome do leitor ou usuário para pesquisar" %>  
         </div>
-        <div class="col-lg-2 form-group">
+        <div class="col-lg-1.2 form-group">
           <%= submit_tag "Pesquisar", :class => "btn btn-primary colorprimarybtn" %>
         </div>
       
         <div class="col-lg-5 form-group">  
             <span class="input-group-btn" style="display: inline-block;"><button class="btn btn-primary colorprimarybtn" type="button" onclick="javascript: location.href='<%= new_livro_leitor_path %>';"><i class="fa fa-plus-circle"></i> Novo empréstimo</button></span>
             <%= link_to "Relatório das Reservas", relatorio_livro_leitors_path(format: 'pdf'), :class => "btn btn-primary colorprimarybtn" %>
-      </div>
+        </div>
+    </div>
   </div>
 </div>
-</div>
+
 <% end  %>  
 
 <div class="table-responsive">

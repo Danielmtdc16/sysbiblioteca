@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Syscead</title>
+    <title>SysBiblioteca</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar" >
             <div class="sidebar-header">
-               <a href="<%= root_path%>" class="menulink"> <h3>SysCead</h3> </a>
+               <a href="<%= root_path%>" class="menulink"> <h3>SysBiblioteca</h3> </a>
             </div>
             <ul class="list-unstyled components" class="menulink">
                 <li>
@@ -44,7 +44,7 @@
                 <li>
                     <a href="<%= livro_leitors_path %>" class="menulink"><i class="fa fa-users fa-fw"></i> Reserva</a>
                 </li>
-               
+                
                 
                 <li>
                     <a href="#configuracaosubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle menulink">
@@ -62,9 +62,7 @@
                         <li>
                             <a href="<%= users_path %>" class="menulink"><i class="fa fa-users fa-fw"></i> Usuários</a>
                         </li>
-                        <li>
-                            <a href="<%= livros_path %>" class="menulink"><i class="fa fa-users fa-fw"></i> Livros</a>
-                        </li>
+            
                         
                         <li>
                             <a href="<%= configuracoes_sistema_path(1) %>" class="menulink"><i class="fa fa-users fa-fw"></i> Configurações do Sistema</a>
@@ -82,9 +80,9 @@
             </ul>
        
          
-           <ul class="list-unstyled CTAs">
+            <ul class="list-unstyled CTAs">
                 <li>
-                   
+                    <%= link_to('SAIR', destroy_user_session_path, method: :delete, class: 'download') %>
                 </li>
             </ul>
         </nav>
