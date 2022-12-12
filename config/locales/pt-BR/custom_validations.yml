@@ -19,7 +19,7 @@ pt-BR:
     attributes:
       leitor:
         cpf: "CPF"
-        matricula: "Matrícula"
+        matricula: "Matrícula ou SIAPE"
         tipo_leitor: "Tipo de Leitor"
       user:
         password: "Senha"
@@ -30,6 +30,9 @@ pt-BR:
         edicao: "Edição"
         categore_id: "Categoria"
         descricao: "Descrição"
+        qtd_paginas: "Qtd Páginas"
+      configuracoes_sistema:
+        ativar_multa: "Ativar Multa"
 
       
       

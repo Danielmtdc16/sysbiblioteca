@@ -4,6 +4,8 @@ class CreateLivroLeitors < ActiveRecord::Migration[6.1]
       t.datetime :data_inicio
       t.datetime :data_entrega
       t.datetime :data_possivel_entrega
+      t.float :multa
+      t.string :status_multa
       t.string :status
       t.text :observacao
       t.references :user, null: false, foreign_key: true

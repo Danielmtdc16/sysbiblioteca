@@ -9,6 +9,7 @@ class ConfiguracoesSistemasController < ApplicationController
 
   # GET /configuracoes_sistemas/1/edit
   def edit
+    
   end
 
 
@@ -34,6 +35,6 @@ class ConfiguracoesSistemasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def configuracoes_sistema_params
-      params.require(:configuracoes_sistema).permit(:prazo_dias, :nome_sistema, :valor_multa)
+      params.require(:configuracoes_sistema).permit(:prazo_dias, :nome_sistema, :valor_multa, :ativar_multa)
     end
 end

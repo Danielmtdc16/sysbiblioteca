@@ -27,11 +27,20 @@
             <%= form.label :leitor_id, :class => 'control-label required' %>
             <%= form.collection_select :leitor_id, listLeitorsAll, :id, :nome, {:prompt => 'Selecionar'}, :class => 'form-control', :id => 'leitor_id'%>
         </div>
+
        <div class="col-lg-4 form-group">   
            <%= form.label :data_inicio, :class => 'control-label required' %>
            <%= form.text_field :data_inicio, type: 'date', id: :user_nome, :class => 'form-control', :value =>(@livro_leitor.id != nil ? @livro_leitor.data_inicio.strftime("%Y-%m-%d") : Date.current) %>
        </div>
        <% if @livro_leitor.id != nil %>
+       <div class="col-lg-4 form-group">   
+            <%= form.label :multa, :class => 'control-label' %>
+            <%= form.number_field :multa, id: :reserva_multa, :class => 'form-control'  %>
+        </div>
+        <div class="col-lg-4 form-group">   
+           <%= form.label :status_multa, :class => 'control-label required' %>
+           <%= form.select :status_multa, list_status_multa, {include_blank: "Selecionar"}, {class: "form-control", required: true} %>
+       </div>
         <div class="col-lg-4 form-group">   
             <%= form.label :data_entrega, :class => 'control-label' %>
             <%= form.text_field :data_entrega, type: 'date', id: :user_nome, :class => 'form-control', :value =>(@livro_leitor.data_entrega != nil ? @livro_leitor.data_entrega.strftime("%Y-%m-%d") : "")  %>
@@ -40,13 +49,14 @@
             <%= form.label :data_possivel_entrega, :class => 'control-label required' %>
             <%= form.text_field :data_possivel_entrega, type: 'date', id: :user_nome, :class => 'form-control', :value =>(@livro_leitor.data_possivel_entrega != nil ? @livro_leitor.data_possivel_entrega.strftime("%Y-%m-%d") : "")  %>
         </div>
-       <% end %>
-
-       <div class="col-lg-4 form-group">   
+        <div class="col-lg-4 form-group">   
            <%= form.label :status, :class => 'control-label required' %>
            <%= form.select :status, list_status, {include_blank: "Selecionar"}, {class: "form-control", required: true} %>
        </div>
 
+       <% end %>
+
+       
     </div>
     
     <div class="row">

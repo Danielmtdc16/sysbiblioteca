@@ -20,7 +20,7 @@
     <div class="row">
        <div class="col-lg-6 form-group">   
            <%= form.label :nome_sistema, :class => 'control-label required' %>
-           <%= form.text_field :nome_sistema, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+           <%= form.text_field :nome_sistema, :class => 'form-control' %>
        </div>
     
     </div>
@@ -28,7 +28,7 @@
     <div class="row">
     <div class="col-lg-6 form-group">   
         <%= form.label :prazo_dias, :class => 'control-label required' %>
-        <%= form.text_field :prazo_dias, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+        <%= form.text_field :prazo_dias, :class => 'form-control' %>
     </div>
  
     </div>  
@@ -37,12 +37,18 @@
     <div class="row">
     <div class="col-lg-6 form-group">   
         <%= form.label :valor_multa, :class => 'control-label required' %>
-        <%= form.text_field :valor_multa, id: :configuracoes_sistema_nome, :class => 'form-control' %>
+        <%= form.text_field :valor_multa, :class => 'form-control' %>
     </div>
- 
     </div>  
     
+    
+    <div class="row">
+    <div class="col-lg-6 form-group">   
+      <%= form.label :ativar_multa, :class => 'control-label required' %>
+      <%= form.select :ativar_multa, list_ativar_multa,  {include_blank: "Selecionar"}, {class: "form-control", required: true} %>
+    </div>
 
+    </div>
     
       <div class="row">
           <div class="col-lg-7 form-group">  

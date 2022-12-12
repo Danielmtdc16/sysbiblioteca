@@ -47,8 +47,9 @@
 </div>
 
   <div class="row">
-    <div class="col-lg-4 form-group">
+    <div class="col-lg-12 form-group">
       <%= link_to 'Alterar', edit_livro_leitor_path(@livro_leitor), :class => "btn btn-primary colorprimarybtn" %>
+      <%= link_to "Relatório da Reserva", relatorioreserva_livro_leitors_path(@livro_leitor, format: 'pdf'), :class => "btn btn-primary colorprimarybtn", :target=> "_blank" %>
       <%= link_to 'Voltar',  livro_leitors_path, :class => "btn btn-primary colorprimarybtn"%>
     </div>
   </div>

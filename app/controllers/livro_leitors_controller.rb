@@ -1,5 +1,5 @@
 class LivroLeitorsController < ApplicationController
-  before_action :set_livro_leitor, only: %i[ show edit update destroy ]
+  before_action :set_livro_leitor, only: %i[ show edit update destroy relatorioreserva ]
 
   def relatorio 
     @livro_leitors = LivroLeitor.all.order("id DESC")
@@ -12,15 +12,28 @@ class LivroLeitorsController < ApplicationController
     end
   end
 
+  def relatorioreserva
+    respond_to do |format|
+      format.pdf do
+          pdf = RelatorioReservaPdf.new(@livro_leitor, @view_context) 
+          send_data pdf.render,
+          filename: "Reserva.pdf", type: "application/pdf", disposition: "inline"
+      end 
+    end
+  end
   
   # GET /livro_leitors or /livro_leitors.json
  
   def index
     if params[:nome] == nil
-      @livro_leitors = LivroLeitor.all.joins(:leitor).joins(:livro).order("leitors.nome ASC").page(params[:page]).per(20)
+      @livro_leitors = LivroLeitor.all.joins(:leitor).joins(:livro).joins(:user).order("leitors.nome ASC, livro_leitors.id DESC").page(params[:page]).per(20)
     else
       #variavel que recebe pesquisa solicitada pelo usuario
-      @livro_leitors = LivroLeitor.all.where("users.nome ILIKE  '%"+params[:nome].strip+"%'").order("users.nome ASC").page(params[:page]).per(20)
+      @livro_leitors = LivroLeitor.all
+      .joins("LEFT JOIN leitors ON leitors.id = livro_leitors.leitor_id")
+      .joins("LEFT JOIN users ON users.id = livro_leitors.user_id")
+      .joins("LEFT JOIN livros ON livros.id = livro_leitors.livro_id")
+      .where("users.nome ILIKE  '%"+params[:nome].strip+"%' OR leitors.nome ILIKE  '%"+params[:nome].strip+"%'").order("leitors.nome ASC, livro_leitors.id DESC").page(params[:page]).per(20)
     end 
   end
 
@@ -35,12 +48,18 @@ class LivroLeitorsController < ApplicationController
 
   # GET /livro_leitors/1/edit
   def edit
+    @configuracoes = ConfiguracoesSistema.first
+    if @configuracoes.ativar_multa == 1 and @livro_leitor.status != "Entregue"
+      @livro_leitor.multa = @livro_leitor.calcular_multa(@configuracoes.valor_multa)
+      @livro_leitor.status = "Prazo expirado"
+    end
   end
 
   # POST /livro_leitors or /livro_leitors.json
   def create
     @livro_leitor = LivroLeitor.new(livro_leitor_params)
     @livro_leitor.user_id = current_user.id
+    @livro_leitor.status = "Pendente"
     respond_to do |format|
       if @livro_leitor.save
         format.html { redirect_to livro_leitor_url(@livro_leitor), notice: "Livro leitor was successfully created." }
@@ -83,6 +102,6 @@ class LivroLeitorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def livro_leitor_params
-      params.require(:livro_leitor).permit(:data_inicio, :data_entrega, :data_possivel_entrega, :status, :observacao, :user_id, :livro_id, :leitor_id)
+      params.require(:livro_leitor).permit(:data_inicio, :data_entrega, :data_possivel_entrega, :multa, :status_multa, :status, :observacao, :user_id, :livro_id, :leitor_id)
     end
 end

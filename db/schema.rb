@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_192922) do
 
   create_table "configuracoes_sistemas", force: :cascade do |t|
     t.integer "prazo_dias"
+    t.integer "ativar_multa"
     t.string "nome_sistema"
     t.float "valor_multa"
     t.datetime "created_at", precision: 6, null: false
@@ -65,6 +66,8 @@ ActiveRecord::Schema.define(version: 2022_10_07_192922) do
     t.datetime "data_inicio"
     t.datetime "data_entrega"
     t.datetime "data_possivel_entrega"
+    t.float "multa"
+    t.string "status_multa"
     t.string "status"
     t.text "observacao"
     t.bigint "user_id", null: false

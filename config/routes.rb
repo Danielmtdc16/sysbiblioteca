@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :configuracoes_sistemas
-  resources :livro_leitors do 
-    collection { get :relatorio }
+  
+  resources :livro_leitors, :path => "livro_leitors" do
+    collection do
+       get "/relatorio"  => "livro_leitors#relatorio", :as => "relatorio"
+       get "/relatorioreserva/:id"  => "livro_leitors#relatorioreserva", :as => "relatorioreserva" 
+    end
   end
   
   devise_for :users

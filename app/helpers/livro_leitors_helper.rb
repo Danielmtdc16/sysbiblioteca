@@ -9,4 +9,13 @@ module LivroLeitorsHelper
         ]
     end
     
+    def list_status_multa
+        @list_status_multa =  
+        [ 
+        ["Sem multa","Sem multa"],
+        ["Pendente de Pagamento", "Pendente de Pagamento"],
+        ["Revogado", "Revogado"],
+        
+        ]
+    end
 end

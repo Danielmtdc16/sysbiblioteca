@@ -19,7 +19,7 @@ class LivroLeitor < ApplicationRecord
     begin
       dias = dias+ (dias - dias_uteis(data_inicial, (Date.current + dias)))
     end while configuracao.prazo_dias>=dias
-    puts "dias:"+dias.to_s
+
     self.data_possivel_entrega = (Date.current + dias)
 
   end
@@ -35,5 +35,11 @@ class LivroLeitor < ApplicationRecord
     end
   end 
 
-
+  def calcular_multa(valor_multa_diaria)
+    qtd_dias = (Date.current.to_date - self.data_possivel_entrega.to_date).to_i
+    if qtd_dias > 0
+      return qtd_dias * valor_multa_diaria
+    end
+    return 0
+  end
 end
